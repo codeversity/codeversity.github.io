@@ -1,6 +1,7 @@
 <template>
   <v-app class="bg">
     <v-main>
+      <navbar />
       <v-container>
         <Nuxt />
       </v-container>
@@ -9,7 +10,10 @@
 </template>
 
 <script>
-export default {}
+import navbar from '~/components/navbar.vue'
+export default {
+  components: { navbar },
+}
 </script>
 <style lang="scss" scoped>
 .bg {
