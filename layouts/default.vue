@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="bg">
     <v-main>
       <v-container>
         <Nuxt />
@@ -11,3 +11,8 @@
 <script>
 export default {}
 </script>
+<style lang="scss" scoped>
+.bg {
+  background-color: $c-bg;
+}
+</style>
