@@ -1,7 +1,10 @@
 <template>
   <div class="navbar-base">
-    <v-row class="pt-6 pb-3" justify="center">
-      <strong>Codeversity</strong>
+    <v-row justify="center">
+      <v-col class="pt-4 mb-n2" align="center">
+        <h3 class="mb-n2">CODEVERSITY</h3>
+        <span class="latin">Ad discere omnia</span>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -11,5 +14,9 @@ export default {}
 <style lang="scss" scoped>
 .navbar-base {
   background-color: $c-dark;
+}
+.latin {
+  font-size: 0.8em;
+  opacity: 0.66;
 }
 </style>
