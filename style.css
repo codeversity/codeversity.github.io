@@ -1,5 +1,6 @@
 html {
   background-color: #242424;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -8,7 +9,6 @@ body {
 
 p, h1, h2, h3 {
   color: #dfdfdf;
-  font-family: 'Roboto', sans-serif;
 }
 
 p {
