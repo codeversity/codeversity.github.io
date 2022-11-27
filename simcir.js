@@ -1984,6 +1984,14 @@ simcir.$ = function() {
       var pos = offset($dev);
       $dev = createDevice(controller($dev).deviceDef, false, scope);
       transform($dev, pos.x, pos.y);
+      
+      if (('ontouchstart' in document.documentElement)) {
+        transform($dev, pos.x + toolboxWidth, pos.y);
+        adjustDevice($dev);
+        addDevice($dev);
+        return;
+      }
+
       $temporaryPane.append($dev);
       var dragPoint = {
         x: event.pageX - pos.x,
@@ -2019,7 +2027,15 @@ simcir.$ = function() {
       $selectedDevices = [];
     };
 
+    var selectedDevice = null;
+    var selX = null;
+    var selY = null;
+
     var beginMoveDevice = function(event, $target) {
+      if ('ontouchstart' in document.documentElement) {
+        return;
+      }
+
       var $dev = $target.closest('.simcir-device');
       var pos = transform($dev);
       if (!controller($dev).isSelected() ) {
@@ -2108,6 +2124,33 @@ simcir.$ = function() {
       event.preventDefault();
       event.stopPropagation();
       var $target = $(event.target);
+
+      if ('ontouchstart' in document.documentElement) {
+        if ($target.closest('.simcir-device').length == 1 && $target.closest('.simcir-toolbox').length != 1) {
+          if (selectedDevice) {
+            selectedDevice.removeClass('simcir-device-selected');
+          }
+          selectedDevice = $target.closest('.simcir-device');
+          selectedDevice.addClass('simcir-device-selected');
+          selX = event.pageX;
+          selY = event.pageY;
+        }
+        else if (selectedDevice) {
+          if ($target.closest('.simcir-toolbox').length == 1) {
+            removeDevice(selectedDevice);
+            selectedDevice = null;
+          }
+          else {
+            var pos = transform(selectedDevice);
+            transform(selectedDevice,
+              pos.x + (event.pageX - selX),
+              pos.y + (event.pageY - selY));
+              updateConnectors();
+              selectedDevice = null;
+          }
+        }
+      }
+
       if (!data.editable) {
         return;
       }

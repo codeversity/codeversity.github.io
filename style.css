@@ -15,3 +15,15 @@ p {
   font-size: 1.15em;
   line-height: 1.35em;
 }
+
+.simcir {
+  margin-bottom: 4em;
+}
+
+a {
+  color: #9aaae3;
+}
+
+a:visited {
+  color: #ca9ae3;
+}
