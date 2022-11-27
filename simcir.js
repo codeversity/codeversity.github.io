@@ -1932,6 +1932,8 @@ simcir.$ = function() {
     var dragMoveHandler = null;
     var dragCompleteHandler = null;
 
+    var selectedNode = null;
+
     var adjustDevice = function($dev) {
       var pitch = unit / 2;
       var adjust = function(v) { return Math.round(v / pitch) * pitch; };
@@ -1951,7 +1953,16 @@ simcir.$ = function() {
       if ($srcNode.attr('simcir-node-type') == 'in') {
         disconnect($srcNode);
       }
+      if (selectedNode == null) {
+        selectedNode = $srcNode;
+      }
+      else {
+        connect($srcNode, selectedNode);
+        selectedNode = null;
+        updateConnectors();
+      }
       dragMoveHandler = function(event) {
+        selectedNode = null;
         var x = event.pageX - off.left;
         var y = event.pageY - off.top;
         $temporaryPane.children().remove();
