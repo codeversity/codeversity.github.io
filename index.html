@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <script type="text/javascript" src="simcir.js"></script>
+  <link rel="stylesheet" type="text/css" href="simcir.css" />
+  <script type="text/javascript" src="simcir-basicset.js"></script>
+  <link rel="stylesheet" type="text/css" href="simcir-basicset.css" />
+  <script type="text/javascript" src="simcir-library.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Logiikkapiirit</title>
+</head>
+<body>
+<h1>Logiikkapiirit</h1>
+<p>Tervetuloa opiskelemaan logiikkapiirejä. Nämä tehtävät ovat suunnattu 6-luokkalaisille.</p>
+<p>Loogiset portit (englanniksi logic gates) ovat kaiken tietokoneen toiminnan peruspalanen.
+  Loogisista porteista rakentuvat mikropiirit, joista rakentuu kaikki tietokoneen osat.</p>
+<p>Näiden tehtävien parissa harjoitellaan erilaisten piirien luomista ja siten loogista ajattelua.
+  Oppimistavoitteena on myös ymmärrys siitä, että NAND-porteilla voi tehdä kaikki muuntyyppiset portit,
+  sekä jonkinlainen käsitys siitä, miten piirit kehittyvät kokonaisiksi tietokoneiksi.</p>
+  <br />
+<h2>Perustehtävät</h2>
+<h3>1. AND-portti</h3>
+<p>Yksi simppeleimmistä porteista on AND-portti. AND-portti päästää virtaa eteenpäin (eli on true), vain
+  jos sen molemmat sisääntulot tuovat sinne virtaa (eli ovat true).
+</p>
+<p>Napauttamalla nappeja A ja B voit pistää ne päälle tai pois. LED syttyy punaiseksi, kun se saa virtaa.</p>
+<p>Tässä piirissä on kuitenkin pieni vika. Nappi A on hienosti kiinni AND-portissa, mutta B on jäänyt
+  irti. Korjaa piiri niin, että pääset testaamaan, toimiiko AND-portti kuten sen pitää.
+</p>
+
+<div class="simcir">
+  {
+    "width":600,
+    "height":400,
+    "showToolbox":false,
+    "devices":[
+      {"type":"DC","id":"dc", "x": 125, "y": 180, "label": "Virta"},
+      {"type":"Toggle","id":"t0", "x": 200, "y": 130, "label": "A"},
+      {"type":"Toggle","id":"t1", "x": 200, "y": 230, "label": "B"},
+      {"type":"LED","id":"led", "x": 350, "y": 180, "label": "LED"},
+      {"type":"AND","id":"and0", "x": 280, "y": 180, "label": "AND"}
+    ],
+    "connectors":[
+      {"from":"dc.out0","to":"t0.in0"},
+      {"from":"dc.out0","to":"t1.in0"},
+      {"from":"t0.out0","to":"and0.in0"},
+      {"from":"and0.out0","to":"led.in0"}
+    ]
+  }
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+html {
+  background-color: #242424;
+}
+
+body {
+  margin: min(20%, 10em);
+}
+
+p, h1, h2, h3 {
+  color: #dfdfdf;
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-size: 1.15em;
+  line-height: 1.35em;
+}
